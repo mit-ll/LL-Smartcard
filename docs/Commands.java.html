@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<TITLE>Commands.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="KEYWORDS" CONTENT="JBuilderHtml">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+Commands.java</FONT>
+</center><FONT SIZE=-2>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+</FONT></FONT></TD></TR></TABLE></FONT>
+<PRE><FONT COLOR="#008000">//---------------------------------------------------------------------------------------</FONT><FONT COLOR="#000000">
+<FONT COLOR="#008000">// Useful tools for decoding smart card commands</FONT><FONT COLOR="#000000">
+<FONT COLOR="#008000">// file:    Commands.java</FONT><FONT COLOR="#000000">
+<FONT COLOR="#008000">// used by: ScanCmds.java</FONT><FONT COLOR="#000000">
+<FONT COLOR="#008000">// For comments see header of ScanCmds.java.</FONT><FONT COLOR="#000000">
+<FONT COLOR="#008000">//---------------------------------------------------------------------------------------</FONT><FONT COLOR="#000000">
+<FONT COLOR="#000000">
+<FONT COLOR="#000080"><B>package</B></FONT><FONT COLOR="#000000"> scpack;
+<FONT COLOR="#000000">
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> Commands {
+<FONT COLOR="#000000">  </FONT><FONT COLOR="#008000">// coding and description of typical smart cards commands</FONT><FONT COLOR="#000000">
+<FONT COLOR="#000000">  </FONT><FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>final</B></FONT><FONT COLOR="#000000"> String CMDTABLE[] = {(</FONT><FONT COLOR="#0000ff">"0x00 0x44 ACTIVATE FILE ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xE2 APPEND RECORD ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0x1E APPLICATION BLOCK EMV"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0x18 APPLICATION UNBLOCK EMV"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x24 CHANGE CHV GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x24 CHANGE REFERENCE DATA ISO/IEC 7816-8"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xE0 CREATE FILE ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x04 DEACTIVATE FILE ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x44 DEACTIVATE FILE ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0xE4 DELETE OP"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xE4 DELETE FILE ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x26 DISABLE CHV GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x26 DISABLE VERIFICATION REQUIREMENT ISO/IEC 7816-8"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x28 ENABLE CHV GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x28 ENABLE VERIFICATION REQUIREMENT ISO/IEC 7816-8"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xC2 ENVELOPE ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x0E ERASE BINARY ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x82 EXTERNAL AUTHENTICATE ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0xAE GENERATE AUTHORISATION CRYPTOGRAM EMV"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x46 GENERATE PUBLIC KEY PAIR ISO/IEC 7816-8"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x84 GET CHALLENGE ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xCA GET DATA ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xC0 GET RESPONSE GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xC0 GET RESPONSE ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0xF2 GET STATUS OP"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x32 INCREASE GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0xE6 INSTALL OP"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x88 INTERNAL AUTHENTICATE ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x04 INVALIDATE GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0x82 ISSUER AUTHENTICATE EMV"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0xE8 LOAD OP"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x70 MANAGE CHANNEL ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x22 MANAGE SECURITY ENVIRONMENT ISO/IEC 7816-8"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x82 MUTUAL AUTHENTICATE ISO/IEC 7816-8"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x10 PERFORM SCQL OPERATION ISO/IEC 7816-7"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x2A PERFORM SECURITY OPERATION ISO/IEC 7816-8"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x12 PERFORM TRANSACTION OPERATION ISO/IEC 7816-7"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x14 PERFORM USER OPERATION ISO/IEC 7816-7"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xDA PUT DATA ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0xD8 PUT KEY OP"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xB0 READ BINARY GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xB0 READ BINARY ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xB2 READ RECORD  GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xB2 READ RECORD  ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x44 REHABILITATE GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x2C RESET RETRY COUNTER ISO/IEC 7816-8"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x88 RUN GSM ALGORITHM GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xA0 SEARCH BINARY ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xA2 SEARCH RECORD ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xA2 SEEK GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xA4 SELECT GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xA4 SELECT ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0xF0 SET STATUS OP"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xFA SLEEP GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xF2 STATUS GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xFE TERMINATE CARD USAGE ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xE6 TERMINATE DF ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xE8 TERMINATE EF ISO/IEC 7816-9"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x2C UNBLOCK CHV GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xD6 UPDATE BINARY GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xD6 UPDATE BINARY ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0xDC UPDATE RECORD GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xDC UPDATE RECORD ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0x20 VERIFY ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x80 0x20 VERIFY EMV"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0xA0 0x20 VERIFY CHV GSM 11.11"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xD0 WRITE BINARY ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">),
+<FONT COLOR="#000000">                                    (</FONT><FONT COLOR="#0000ff">"0x00 0xD2 WRITE RECORD ISO/IEC 7816-4"</FONT><FONT COLOR="#000000">)};
+<FONT COLOR="#000000">
+<FONT COLOR="#000000">  </FONT><FONT COLOR="#008000">/** decode a smart card on the basis of class and instruction
+<FONT COLOR="#008000">   *  @param  cla class byte
+<FONT COLOR="#008000">   *  @param  ins instruction byte
+<FONT COLOR="#008000">   *  @return string with the decoded command
+<FONT COLOR="#008000">   */</FONT><FONT COLOR="#000000">
+<FONT COLOR="#000000">  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> String decodeCmd(</FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> cla, </FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> ins) {
+<FONT COLOR="#000000">    </FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i, n;
+<FONT COLOR="#000000">    String command = </FONT><FONT COLOR="#0000ff">""</FONT><FONT COLOR="#000000">, clains, s;
+<FONT COLOR="#000000">
+<FONT COLOR="#000000">    clains = </FONT><FONT COLOR="#0000ff">"0x"</FONT><FONT COLOR="#000000"> + ScanCmds.IntTo2CharHexString(cla);
+<FONT COLOR="#000000">    clains = clains + </FONT><FONT COLOR="#0000ff">" 0x"</FONT><FONT COLOR="#000000"> + ScanCmds.IntTo2CharHexString(ins);
+<FONT COLOR="#000000">
+<FONT COLOR="#000000">    </FONT><FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (i = </FONT><FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">; i &LT; CMDTABLE.length; i++) {
+<FONT COLOR="#000000">      </FONT><FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (CMDTABLE[i].startsWith(clains) == </FONT><FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">) command = CMDTABLE[i];
+<FONT COLOR="#000000">    }  </FONT><FONT COLOR="#008000">// for</FONT><FONT COLOR="#000000">
+<FONT COLOR="#000000">
+<FONT COLOR="#000000">    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> command;
+<FONT COLOR="#000000">  } </FONT><FONT COLOR="#008000">// decodeCmd</FONT><FONT COLOR="#000000">
+<FONT COLOR="#000000">
+<FONT COLOR="#000000">} </FONT><FONT COLOR="#008000">// class</FONT><FONT COLOR="#000000">
+<FONT COLOR="#008000">//---------------------------------------------------------------------------------------</FONT><FONT COLOR="#000000">
+<FONT COLOR="#000000">
+<FONT COLOR="#000000">
+<FONT COLOR="#000000">
+</FONT>
+</PRE>
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+Commands.java</FONT
+></CENTER><FONT SIZE=-2>
+<FONT FACE="Arial,Helvetica" COLOR="#000000"></FONT></FONT></TD></TR></TABLE></FONT></BODY></HTML>
