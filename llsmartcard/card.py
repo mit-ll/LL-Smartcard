@@ -1786,21 +1786,17 @@ class CAC(SmartCard):
 
 
 
-class VisaCard(SmartCard):
+class CreditCard(SmartCard):
     """
         Implements some known features of Visa smartcards
     """
     INFO_REC = 1
     INFO_SFI = 12
 
-    def select_visa_applet(self):
+    def _parse_applet_info(self, data):
         """
-            Will send the appropriate APDU to select the Visa applet
+            Parse the data we get back from selecting the applet
         """
-        data, sw1, sw2 = self.apdu_select_application(APDU.APPLET.VISA)
-        if sw1 != APDU.APDU_STATUS.SUCCESS:
-            print "ERROR: This does not appear to be a valid Visa Card!"
-            
         # Is this a FCI template?
         if data[0] == 0x6f:
             tlv = self._decode_ber_tlv(data)
@@ -1824,9 +1820,32 @@ class VisaCard(SmartCard):
                             logger.info("  Application Label: %s"%app_label)
                         if pt[0] == 0x87:
                             logger.info("  Application Priority Indicator: %s"%pt[1][0])
+
+
+    def select_visa_applet(self):
+        """
+            Will send the appropriate APDU to select the Visa applet
+        """
+        data, sw1, sw2 = self.apdu_select_application(APDU.APPLET.VISA)
+        if sw1 != APDU.APDU_STATUS.SUCCESS:
+            print "ERROR: This does not appear to be a valid VISA card!"
+        else:
+            self._parse_applet_info(data)
+        
+    
+    def select_mastercard_applet(self):
+        """
+            Will send the appropriate APDU to select the Visa applet
+        """
+        data, sw1, sw2 = self.apdu_select_application(APDU.APPLET.MASTERCARD)
+        if sw1 != APDU.APDU_STATUS.SUCCESS:
+            print "ERROR: This does not appear to be a valid MasterCard!"
+        else:
+            self._parse_applet_info(data)
+
                 
 
-    def read_visa(self):
+    def read_card_info(self):
         """
             Read known paramaters from a Visa smartcard
         """

@@ -4,11 +4,12 @@
 """
 # Navtive
 import logging
+logger = logging.getLogger(__name__)
 import sys
 import optparse
 
 # LL Smartcard 
-from llsmartcard.card import VisaCard
+from llsmartcard.card import CreditCard
 
 
 # Service code decoder
@@ -43,21 +44,21 @@ def process_card(connection, options):
     """
 
     # Open card
-    card = VisaCard(connection)
+    card = CreditCard(connection)
     
-    # Select 
-    card.select_visa_applet()
+    # Select
+    if options.card_type == "V": 
+        print "* Reading VISA card..."
+        card.select_visa_applet()
+    elif options.card_type == "M":
+        print "* Reading MasterCard..."
+        card.select_mastercard_applet()
+    else:
+        logger.error("Unrecognized card type.")
+        return
 #     card.dump_records()
     
-#     for sfi in range(0x00,32):
-#         for rec in range(0x00,17):
-#             (data, sw1, sw2) = card.apdu_read_record(rec, (sfi << 3) | 4)
-#             if (sw1, sw2) == (0x6e,0x0):
-#                 for cla in range (0x01, 0xff+1):
-#                     (data, sw1, sw2) = card.apdu_read_record(rec, (sfi << 3) | 4, cla=cla)
-#                     if (sw1, sw2) == (0x90,0x0):
-#                         sys.exit(0)
-    cc_info = card.read_visa()
+    cc_info = card.read_card_info()
     
     if cc_info is not None:
             print "Bank card info: "
@@ -76,9 +77,9 @@ if __name__ == "__main__":
     opts = optparse.OptionParser()
 
     # Add any options we want here
-    opts.add_option("-s", "--sample", action="store_true",
-        dest="sample", default=False,
-        help="Sample")
+    opts.add_option("-t", "--card_type", action="store",
+        dest="card_type", default="V",
+        help="Type of card (V - VISA, M - MasterCard")
 
     # parse user arguments
     parser.command_line(opts, process_card)
