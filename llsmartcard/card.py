@@ -347,7 +347,7 @@ class SmartCard:
         return (data, sw1, sw2)
 
 
-    def apdu_read_record(self, p1, p2):
+    def apdu_read_record(self, p1, p2, cla=0x00):
         """
             Send APDU to get data and return results
             
@@ -357,12 +357,12 @@ class SmartCard:
             @param p2: low order byte
             @return: (data, sw1, sw2) 
         """
-        apdu_read_record = APDU.READ_RECORD(p1, p2)
+        apdu_read_record = APDU.READ_RECORD(p1, p2, CLA=cla)
 
         data, sw1, sw2 = self._send_apdu(apdu_read_record)
 
         if sw1 == APDU.APDU_STATUS.WRONG_LENGTH:
-            apdu_read_record2 = APDU.READ_RECORD(p1, p2, sw2)
+            apdu_read_record2 = APDU.READ_RECORD(p1, p2, CLA=cla, Le=sw2)
             data, sw1, sw2 = self._send_apdu(apdu_read_record2)
         return (data, sw1, sw2)
 
@@ -811,13 +811,8 @@ class SmartCard:
                     print "REC %d SFI %d" % (rec, (sfi << 3) | 4)
                     print "Hex: %s" % APDU.get_hex(data)
                     print "Str: %s" % APDU.get_str(data)
-
-
-class CAC(SmartCard):
-    """
-        This class implements some knwown functionality for the DoD CAC smartcard.
-    """
-
+                    
+    
     def _decode_bcd(self, bcd_num):
         """
             Given a 5 bit Binary Coded Decimal, decode back to the appropriate string
@@ -902,6 +897,11 @@ class CAC(SmartCard):
         else:
             return rtn_list
 
+
+class CAC(SmartCard):
+    """
+        This class implements some knwown functionality for the DoD CAC smartcard.
+    """
 
     def _lookup_agency(self, code):
         """
@@ -1800,26 +1800,82 @@ class VisaCard(SmartCard):
         data, sw1, sw2 = self.apdu_select_application(APDU.APPLET.VISA)
         if sw1 != APDU.APDU_STATUS.SUCCESS:
             print "ERROR: This does not appear to be a valid Visa Card!"
+            
+        # Is this a FCI template?
+        if data[0] == 0x6f:
+            tlv = self._decode_ber_tlv(data)
+            logger.info("FCI Template")
+            
+            template = self._decode_ber_tlv(tlv[0][1])
+            # Parse template info
+            for t in template:
+                if t[0] == 0x84:
+                    df_name = "".join(["%02X"%x for x in t[1]])
+                    logger.info("DF Name: %s"%df_name)
+                    
+                if t[0] == 0xa5:
+                    logger.info(" FCI Proprietary Template")
+                    prop_template = self._decode_ber_tlv(t[1])
+                    
+                    # Parse embedded info
+                    for pt in prop_template:
+                        if pt[0] == 0x50:
+                            app_label = "".join([str(unichr(x)) for x in pt[1]])
+                            logger.info("  Application Label: %s"%app_label)
+                        if pt[0] == 0x87:
+                            logger.info("  Application Priority Indicator: %s"%pt[1][0])
+                
 
     def read_visa(self):
         """
             Read known paramaters from a Visa smartcard
         """
-        data, sw1, sw2 = self.apdu_read_record(self.INFO_REC, self.INFO_SFI)
+        
+        # REad the record from teh card
+        data, sw1, sw2 = self.apdu_read_record(self.INFO_REC, self.INFO_SFI, cla=0x00)
+        
+        # Was it a succes?
         if sw1 == APDU.APDU_STATUS.SUCCESS:
-            card_num = data[4:12]
-            card_name = ""
-            for i in range(26, len(data)):
-                if data[i] != 0x9f:
-                    card_name += chr(data[i])
-                else:
-                    break
+            
+            # Setup our dict
+            info = {}
+            
+            tlv = self._decode_ber_tlv(data)
+            
+            # Is this application data?
+            if tlv[0][0] == 0x70:
 
-            print "---"
-            print "Card Number: %s" % APDU.get_hex(card_num)
-            print "Name: %s" % card_name
-            print "---"
+                # Parse the data in the application
+                cc_info = self._decode_ber_tlv(tlv[0][1])
+                for field in cc_info:
+                    # Is it a name field?
+                    if field[0] == 0x5f:
+                        cc_data = "".join([chr(x) for x in field[1]])
+                        
+                        cc_data = cc_data.split("/")
+                        info['last_name'] = cc_data[0].strip()
+                        info['first_name'] = cc_data[1].strip()
+                    
+                    # Account info field?
+                    if field[0] == 0x57:
+                        cc_data = "".join(["%02X"%x for x in field[1]])
+                        
+                        k = cc_data.find('D')
+                        
+                        info['account_number'] = cc_data[:k]
+                        
+                        
+                        info['exp_year'] = cc_data[k+1:k+3]
+                        info['exp_month'] = cc_data[k+3:k+5]
+                        info['service_first'] = cc_data[k+5]
+                        info['service_second'] = cc_data[k+6] 
+                        info['service_third'] = cc_data[k+7]
+                        
+            return info
+        
         else:
-            print "ERROR: Couldn't read card data."
+            logger.error("Couldn't read card data.")
+            return None
 
-
+        
+    
