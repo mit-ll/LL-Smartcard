@@ -1,5 +1,6 @@
 # Native
 import logging
+import sys
 logger = logging.getLogger(__name__)
 
 # 3rd Party
@@ -50,7 +51,9 @@ def command_line(opts, callback, args=None):
                 connection.connect()
                 # process card in reader
                 callback(connection, options)
+                break
 
             except smartcard.Exceptions.CardConnectionException:
                 print "ERROR: Couldn't connect to card in %s" % reader_list[i]
+                sys.exit(0)
 
