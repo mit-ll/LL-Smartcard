@@ -67,7 +67,9 @@
  * Example using certs:
 
    >$ echo "Hello World!" > input.txt
+   
    >$ python cac_crypto.py -E -k test/cac/cac_pki_enc.pub -i input.txt -o input_encrypted.ssl 
+   
    >$ python cac_crypto.py -D -i input_encrypted.ssl -c KEY_PKI_ENC -o input_decrypted.txt -p 7777777
 
 # Disclaimer
