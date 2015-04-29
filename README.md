@@ -29,10 +29,10 @@
  * Install [pyscard](http://pyscard.sourceforge.net/) python library
 
  * Install PC/SC
->	$ sudo apt-get install pcsc-tools pcscd
+   >$ sudo apt-get install pcsc-tools pcscd
 
  * To install all of these just run:
->	$ ./install_dependencies.sh 
+   >$ ./install_dependencies.sh 
 
 
 # Usage
@@ -64,11 +64,11 @@
   - Extract Public Key: openssl x509 -inform DER  -pubkey -in <input certificate>  > <output file>
 
 
- * Example using certs
+ * Example using certs:
 
->   echo "Hello World!" > input.txt
->   python cac_crypto.py -E -k test/cac/cac_pki_enc.pub -i input.txt -o input_encrypted.ssl 
->   python cac_crypto.py -D -i input_encrypted.ssl -c KEY_PKI_ENC -o input_decrypted.txt -p 7777777
+   >$ echo "Hello World!" > input.txt
+   >$ python cac_crypto.py -E -k test/cac/cac_pki_enc.pub -i input.txt -o input_encrypted.ssl 
+   >$ python cac_crypto.py -D -i input_encrypted.ssl -c KEY_PKI_ENC -o input_decrypted.txt -p 7777777
 
 # Disclaimer
 
