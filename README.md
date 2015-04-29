@@ -70,3 +70,6 @@
 >   python cac_crypto.py -E -k test/cac/cac_pki_enc.pub -i input.txt -o input_encrypted.ssl 
 >   python cac_crypto.py -D -i input_encrypted.ssl -c KEY_PKI_ENC -o input_decrypted.txt -p 7777777
 
+# Disclaimer
+
+This work is sponsored by the Defense Information Systems Agency under Air Force Contract #FA8721-05-C-0002.  Opinions, interpretations, conclusions and recommendations are those of the author and are not necessarily endorsed by the United States Government.
