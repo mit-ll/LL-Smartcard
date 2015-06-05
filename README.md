@@ -1,4 +1,3 @@
-***
      _      _          _____                      _    _____              _  
     | |    | |        / ____|                    | |  / ____|            | | 
     | |    | |  _____| (___  _ __ ___   __ _ _ __| |_| |     __ _ _ __ __| | 
@@ -6,11 +5,9 @@
     | |____| |____    ____) | | | | | | (_| | |  | |_| |___| (_| | | | (_| | 
     |______|______|  |_____/|_| |_| |_|\__,_|_|   \__|\_____\__,_|_|  \__,_|
 
-
             Authors: Chad Spensky (chad.spensky@ll.mit.edu)
                        Hongyi Hu (hongyi.hu@ll.mit.edu)
 
-================================================================================
 
 # Contents
 
@@ -71,5 +68,9 @@
    >$ python cac_crypto.py -D -i input_encrypted.ssl -c KEY_PKI_ENC -o input_decrypted.txt -p 7777777
 
 # Disclaimer
-
+<p align="center">
 This work is sponsored by the Defense Information Systems Agency under Air Force Contract #FA8721-05-C-0002.  Opinions, interpretations, conclusions and recommendations are those of the author and are not necessarily endorsed by the United States Government.
+<br>
+© 2015 Massachusetts Institute of Technology 
+</p>
+
