@@ -334,7 +334,7 @@ def SET_STATUS(P1, P2, data, CLA=0x80):
         @param P1:  Status Type
                     0x80 Security Domain
                     0x40 Application
-        @param P2:  State Control
+        @param P2:  State Coapdu_ntrol
                     0x80 Locked
                     0x00 Unlocked
                     (See Table 9-5)

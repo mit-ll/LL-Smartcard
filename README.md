@@ -44,13 +44,8 @@
  
   This section discusses how to work with the certificates on the CAC.
 
- * Certificates are returned in gzipped form.
->	$ gunzip <cert.gz>
-
- * Certificates are in DER form
->	$ openssl x509 -inform DER -in <cert>
->	$ openssl x509 -issuer -email -startdate -enddate -inform DER -in <cert>
->	$ openssl x509 -inform DER -noout -text -in <cert>
+ * Extract Certificates
+    python cac_crypto.py -x test
 
  * Working with certs (Referenced from [here](http://www.devco.net/archives/2006/02/13/public_-_private_key_encryption_using_openssl.php)).
 
@@ -65,7 +60,17 @@
    
    >$ python cac_crypto.py -E -k test/cac/cac_pki_enc.pub -i input.txt -o input_encrypted.ssl 
    
-   >$ python cac_crypto.py -D -i input_encrypted.ssl -c KEY_PKI_ENC -o input_decrypted.txt -p 7777777
+   >$ python cac_crypto.py -D -i input_encrypted.ssl -c KEY_PKI_ENC -o input_decrypted.txt -p 77777777
+
+# Notes
+
+ * Certificates are returned in gzipped form.
+  >	$ gunzip <cert.gz>
+
+ * Certificates are in DER form
+  >	$ openssl x509 -inform DER -in <cert>
+  >	$ openssl x509 -issuer -email -startdate -enddate -inform DER -in <cert>
+  >	$ openssl x509 -inform DER -noout -text -in <cert>
 
 # Disclaimer
 <p align="center">

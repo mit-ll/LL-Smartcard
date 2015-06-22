@@ -240,7 +240,7 @@ def main(args=None):
 
                     # VERIFY PIN
                     logger.info("Verfying PIN...")
-                    data, sw1, sw2 = card.apdu_verify_pin(PIN, p2=0x00)
+                    data, sw1, sw2 = card.apdu_verify_pin(PIN, 0x00)
 
                     # Select CAC Applet
                     logger.info("Selecting CAC Applet...")

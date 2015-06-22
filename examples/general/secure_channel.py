@@ -8,8 +8,7 @@ import optparse
 
 # LL Smartcard 
 import llsmartcard.apdu as APDU
-import llsmartcard.helper as HELPER
-from llsmartcard.card import SmartCard, VisaCard, CAC
+from llsmartcard.card import CAC
 
 # Globals
 log_level = logging.ERROR

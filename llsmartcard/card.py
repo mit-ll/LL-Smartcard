@@ -31,7 +31,7 @@ class SmartCard:
         self.SECURE_CHANNEL = False
         self.session_keys = None
         if log_level is not None:
-            logger.basicConfig(level=log_level)
+            logging.basicConfig(level=log_level)
         self.__conn = connection
 
     def _log_apdu(self, apdu_data):
