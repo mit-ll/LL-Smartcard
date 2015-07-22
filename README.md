@@ -49,9 +49,11 @@
 
  * Working with certs (Referenced from [here](http://www.devco.net/archives/2006/02/13/public_-_private_key_encryption_using_openssl.php)).
 
-  - Encrypt: openssl pkeyutl -encrypt -in <input plain text> -pubin -inkey [input public key] -out [output file]
+  - Encrypt
+  >$ openssl pkeyutl -encrypt -in <input plain text> -pubin -inkey [input public key] -out [output file]
 
-  - Extract Public Key: openssl x509 -inform DER  -pubkey -in [input certificate]  > output.key
+  - Extract Public Key
+  >$ openssl x509 -inform DER  -pubkey -in [input certificate]  > output.key
 
 
  * Example using certs:
