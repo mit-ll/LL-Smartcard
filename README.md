@@ -49,9 +49,9 @@
 
  * Working with certs (Referenced from [here](http://www.devco.net/archives/2006/02/13/public_-_private_key_encryption_using_openssl.php)).
 
-  - Encrypt: openssl pkeyutl -encrypt -in <input plain text> -pubin -inkey <input public key> -out <output file>
+  - Encrypt: openssl pkeyutl -encrypt -in <input plain text> -pubin -inkey [input public key] -out [output file]
 
-  - Extract Public Key: openssl x509 -inform DER  -pubkey -in <input certificate>  > output.key
+  - Extract Public Key: openssl x509 -inform DER  -pubkey -in [input certificate]  > output.key
 
 
  * Example using certs:
@@ -65,12 +65,12 @@
 # Notes
 
  * Certificates are returned in gzipped form.
-  >	$ gunzip <cert.gz>
+  >	$ gunzip [cert.gz]
 
  * Certificates are in DER form
-  >	$ openssl x509 -inform DER -in <cert>
-  >	$ openssl x509 -issuer -email -startdate -enddate -inform DER -in <cert>
-  >	$ openssl x509 -inform DER -noout -text -in <cert>
+  >	$ openssl x509 -inform DER -in [cert]
+  >	$ openssl x509 -issuer -email -startdate -enddate -inform DER -in [cert]
+  >	$ openssl x509 -inform DER -noout -text -in [cert]
 
 # Disclaimer
 <p align="center">
