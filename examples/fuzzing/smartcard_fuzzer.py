@@ -1,4 +1,8 @@
 """
+ Copyright 2015, MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+ Subject to FAR 52.227-11 – Patent Rights – Ownership by the Contractor (May 2014).
+ SPDX-License-Identifier: BSD-3-Clause
+
     This application was made to enumerate all of the APDUs on a card
     
     This specific example first selects the CAC's PIV applet before fuzzing.
