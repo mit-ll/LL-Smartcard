@@ -1,5 +1,9 @@
 """
-	This application was made to interact with the cryptographic functions
+Copyright 2015, MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+Subject to FAR 52.227-11 – Patent Rights – Ownership by the Contractor (May 2014).
+SPDX-License-Identifier: BSD-3-Clause
+
+ 	This application was made to interact with the cryptographic functions
 	on the CAC cards.  While it does not folow our template format, the 
 	features of llsmartcard utilized are still relevant.
 """
