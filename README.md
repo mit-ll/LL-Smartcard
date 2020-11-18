@@ -74,10 +74,13 @@
   >	$ openssl x509 -issuer -email -startdate -enddate -inform DER -in [cert]
   >	$ openssl x509 -inform DER -noout -text -in [cert]
 
+# Citation
+Please use this DOI number reference, published on Zenodo, when citing the software:
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4279824.svg)](https://doi.org/10.5281/zenodo.4279824)
+
 # Disclaimer
 <p align="center">
 This work is sponsored by the Defense Information Systems Agency under Air Force Contract #FA8721-05-C-0002.  Opinions, interpretations, conclusions and recommendations are those of the author and are not necessarily endorsed by the United States Government.
 <br>
 © 2015 Massachusetts Institute of Technology 
 </p>
-
