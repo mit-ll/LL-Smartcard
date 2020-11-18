@@ -1,5 +1,10 @@
+
 """
- Return codes
+Copyright 2015, MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+Subject to FAR 52.227-11 – Patent Rights – Ownership by the Contractor (May 2014).
+SPDX-License-Identifier: BSD-3-Clause
+
+Return codes
      ref: http://www.cardwerk.com/smartcards/smartcard_standard_ISO7816-4_6_basic_interindustry_commands.aspx
      ref: http://www.cardwerk.com/smartcards/smartcard_standard_ISO7816-4_7_transmission_interindustry_commands.aspx
      """
