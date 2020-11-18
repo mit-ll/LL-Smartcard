@@ -1,3 +1,7 @@
+# Copyright 2015, MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+# Subject to FAR 52.227-11 – Patent Rights – Ownership by the Contractor (May 2014).
+# SPDX-License-Identifier: BSD-3-Clause
+
 """
     This a nice simple reference implementation when creating new smartcard
     programs using the LL-Smartcard API
