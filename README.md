@@ -77,7 +77,7 @@
 # Citation
 Please use this DOI number reference, published on Zenodo, when citing the software:
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4279824.svg)](https://doi.org/10.5281/zenodo.4279824)
+[![DOI](https://zenodo.org/badge/35278621.svg)](https://zenodo.org/badge/latestdoi/35278621)
 
 # Disclaimer
 <p align="center">
