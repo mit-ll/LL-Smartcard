@@ -75,8 +75,7 @@
   >	$ openssl x509 -inform DER -noout -text -in [cert]
 
 # Citation
-Please use this DOI number reference, published on Zenodo, when citing the software:
-
+Please use this DOI number reference, published on [Zenodo](https://zenodo.org), when citing the software:    
 [![DOI](https://zenodo.org/badge/35278621.svg)](https://zenodo.org/badge/latestdoi/35278621)
 
 # Disclaimer
